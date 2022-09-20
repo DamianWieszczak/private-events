@@ -1,0 +1,12 @@
+<h1>User <%= @user.username %></h1>
+
+<% if @user.created_events.empty? %>
+  <p>User has no events</p>
+<% else %>
+  <% @user.created_events.each do |event| %>
+    <%= event.title %><br>
+    <%= event.description %>
+  <% end %>
+<% end %>
+
+<%= link_to "Create Event", new_event_path %>
