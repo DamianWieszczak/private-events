@@ -1,4 +1,11 @@
 <%= @event.title %><br>
 <%= @event.description %><br>
 Date & Time <%= @event.date %><br>
-Hosted by: <%= @event.creator.username %>
+Hosted by: <%= @event.creator.username %><br>
+<% if @event.attendees.empty? %>
+  <p>This event has no attendees yet!</p>
+<% else %>
+  <% @event.attendees.each do |attendee| %>
+    <%= attendee.name %><br>
+  <% end %>
+<% end %>
