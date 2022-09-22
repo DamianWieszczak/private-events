@@ -1,6 +1,6 @@
-class CreateAttendeesEvents < ActiveRecord::Migration[7.0]
+class CreateInvitations < ActiveRecord::Migration[7.0]
   def change
-    create_table :attendees_events do |t|
+    create_table :invitations do |t|
       t.references :user, null: false, foreign_key: true
       t.references :event, null: false, foreign_key: true
 
