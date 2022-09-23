@@ -1,6 +1,6 @@
 <%= @event.title %><br>
 <%= @event.description %><br>
-Date & Time <%= @event.date %><br>
+Date & Time: <%= @event.date.strftime("%B %-d, %Y at %l:%M %p") %><br>
 Hosted by: <%= @event.creator.username %><br>
 <% if @event.attendees.empty? %>
   <p>This event has no attendees yet!</p>
