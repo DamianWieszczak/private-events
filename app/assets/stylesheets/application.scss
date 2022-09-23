@@ -15,3 +15,36 @@
  */
  @import "bootstrap";
  @import "font-awesome";
+
+ body {
+  background-color: #EFEFEF;
+ }
+
+ h1 {
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #E21C4A;
+ }
+
+ h2 {
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #E21C4A;
+ }
+
+ .form-background {
+  background-color: white;
+  border-radius: 1%;
+  margin: 20px;
+  padding: 20px;
+  text-shadow: 20px;
+  justify-content: center;
+  flex-direction: column;
+ }
+
+ .form-label {
+  font-weight: bold;
+ }
+
+ .edit-image {
+  width: 90%;
+  align-items: center;
+ }
