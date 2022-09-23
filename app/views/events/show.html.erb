@@ -5,7 +5,18 @@ Hosted by: <%= @event.creator.username %><br>
 <% if @event.attendees.empty? %>
   <p>This event has no attendees yet!</p>
 <% else %>
+  <h3>Attendees</h3>
   <% @event.attendees.each do |attendee| %>
-    <%= attendee.name %><br>
+    <%= attendee.username %><br>
+  <% end %>
+<% end %>
+
+<% if @event.date.past? %>
+  <%= link_to "The event has ended", root_path, class: "btn btn-danger d-grid gap-2 col-3 ms-auto disabled"%>
+<% else %>
+  <% if @event.attendees.include?(current_user) %>
+    <%= link_to "Leave Event", leave_event_path(@event.id), class: "btn btn-danger d-grid gap-2 col-3 ms-auto" %>
+  <% else %>
+    <%= link_to "Join Event", join_event_path(@event.id), class: "btn btn-dark d-grid gap-2 col-3 ms-auto" %>
   <% end %>
 <% end %>

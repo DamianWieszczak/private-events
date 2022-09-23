@@ -53,6 +53,9 @@ gem "jquery-rails"
 gem "bootstrap"
 gem "sassc-rails"
 
+# Font-Awesome
+gem "font-awesome-sass", "~> 6.2.0"
+
 # User Authentication
 gem 'devise'
 

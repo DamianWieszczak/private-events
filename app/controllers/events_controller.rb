@@ -7,6 +7,25 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def join
+    @event = Event.find(params[:id])
+
+    attendees_events = AttendeesEvent.new(attendee_id: current_user.id, event_id: @event.id)
+    if attendees_events.save
+      redirect_to @event, notice: "You signed up for the event!"
+    else
+      redirect_to @event, alert: "You are already signed up for this event!"
+    end
+  end
+
+  def leave
+    @event = Event.find(params[:id])
+    attendees_events = AttendeesEvent.find_by(attendee_id: current_user.id, event_id: @event.id)
+    attendees_events.destroy
+
+    redirect_to @event, notice: "You are no longer participating in this event!"
+  end
+
   def show
     
   end

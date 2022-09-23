@@ -4,7 +4,13 @@ Rails.application.routes.draw do
   get "home", to: "pages#home"
 
   devise_for :users
-  resources :users, only: [:index, :show]
-  resources :events, only: [:index, :show, :create, :new, :edit, :update, :destroy]
-  resources :invitations, only: [:index, :show, :create, :new, :destroy, :update] 
+  resources :events do
+    resources :attendees_events, only: [:new, :create, :destroy]
+    member do
+      get "join"
+      get "leave"
+    end
+  end
+
+  resources :users, only: [:show]
 end

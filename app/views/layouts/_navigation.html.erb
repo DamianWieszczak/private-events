@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <%= link_to "Private-Events", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown me-2">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Profile
+              <%= icon('fa-solid', 'user')%>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
+              <li><hr class="dropdown-divider"></li>
+              <%= link_to "Logout", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <%= link_to "New Event", new_event_path, class: "nav-link-active btn btn-outline-dark mr-2" %>
+          </li>
+        <% else %>
+          <%= link_to "Login", new_user_session_path, class: "btn btn-outline-dark me-2" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-dark" %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
