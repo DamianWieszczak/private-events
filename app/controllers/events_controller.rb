@@ -31,17 +31,17 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new
+    @event = current_user.created_events.build
   end
 
   def create
-    @event = current_user.events.build(event_params)
+    @event = current_user.created_events.build(event_params)
 
     if @event.save
       redirect_to root_path
       flash[:notice] = "Created Successfully"
     else
-      render :new
+      render "new"
       flash.now[:alert] = "Something went wrong"
     end
   end

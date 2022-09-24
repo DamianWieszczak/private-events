@@ -1,0 +1,34 @@
+<%= form_with model: event, local: true do |f| %>
+  <% if event.errors.any? %>
+    <ul>
+      <% event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, class: "form-label" %> <br>
+    <%= f.text_field :title, placeholder: "Event Title", autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, class: "form-label" %> <br>
+    <%= f.text_area :description, placeholder: "Event Description", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :location, class: "form-label" %> <br>
+    <%= f.text_field :location, placeholder: "Event Location", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :date, class: "form-label" %> <br>
+    <%= f.datetime_field :date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-outline-dark mb-2 mt-2" %>
+  </div>
+
+<% end %>
