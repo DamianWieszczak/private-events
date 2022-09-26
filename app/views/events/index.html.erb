@@ -1,18 +1,62 @@
-<h1>Upcoming Events</h1>
+<section id="main-image">
+  <div class="container">
+      <h3 class="main-text">
+      Ready. <br> To. <br> Plan.
+      </h3>
+  </div>
+</section>
 
-<%= link_to "Create Event", new_event_path, class: "btn btn-outline-dark floath-right" %><br>
+<div class="row mb-4 mt-4">
+  <div class="col">
+    <h1>Upcoming Events</h1>
+  </div>
+  <div class="col">
+    <%= link_to "Create Event", new_event_path, class: "btn btn-outline-dark float-right" %>
+  </div>
+</div>
 
-<% @events.upcoming.each do |event| %>
-  <%= event.title %>
-  <%= event.date.strftime("%B %-d, %Y") %>
-  <%= event.description.truncate(100) %>
-  <%= link_to "Read more", event_path(event), class: "btn btn-outline-success" %>
-<% end %>
 
-<h2>Past Events</h2>
-<% @events.past.each do |event| %>
-  <%= event.title %>
-  <%= event.date.strftime("%B %-d, %Y") %>
-  <%= event.description.truncate(50) %>
-  <%= link_to "Read more", event_path(event), class: "btn btn-outline-success" %>
-<% end %>
+<div class="container text-center">
+  <div class="row mb-5">
+    <% @events.upcoming.each do |event| %>
+      <div class="col-md-4 mb-4">
+        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+          <div class="card-header"><%= event.title %></div>
+          <div class="card-body">
+            <p class="card-text mb-2 mt-2"><%= event.description.truncate(100) %></p>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Event Date: <%= event.date.strftime("%B %-d, %Y") %></small> <br>
+            <%= link_to "Read more", event_path(event), class: "btn btn-outline-success btn-sm mb-2 mt-2" %>
+          </div> 
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row mb-4 mt-4">
+  <div class="col">
+    <h2>Past Events</h1>
+  </div>
+</div>
+
+<div class="container text-center">
+  <div class="row mb-5">
+    <% @events.past.each do |event| %>
+      <div class="col-md-4 mb-4">
+        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+          <div class="card-header"><%= event.title %></div>
+          <div class="card-body">
+            <p class="card-text mb-2 mt-2"><%= event.description.truncate(100) %></p>
+          </div>
+          <div class="card-footer text-muted">
+            <small>Event Date: <%= event.date.strftime("%B %-d, %Y") %></small> <br>
+            <%= link_to "Read more", event_path(event), class: "btn btn-outline-success btn-sm mb-2 mt-2" %>
+          </div> 
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

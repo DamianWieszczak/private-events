@@ -32,6 +32,32 @@
   margin: 20px 0px 20px 0px;
  }
 
+ #main-image {
+  background-image: image-url("main-image.png");
+  background-blend-mode: overlay;;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: auto;
+  min-height: 20rem;
+ }
+
+ #main-image .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ }
+
+ .main-text {
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #E21C4A;
+  margin: 20px 0px 20px 0px;
+  line-height: 2em;
+ }
+
  .form-background {
   background-color: white;
   border-radius: 1%;
