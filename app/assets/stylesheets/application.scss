@@ -20,13 +20,7 @@
   background-color: #EFEFEF;
  }
 
- h1 {
-  font-weight: bold;
-  text-shadow: 1px 1px 1px #E21C4A;
-  margin: 20px 0px 20px 0px;
- }
-
- h2 {
+ h1, h2, h3 {
   font-weight: bold;
   text-shadow: 1px 1px 1px #E21C4A;
   margin: 20px 0px 20px 0px;
@@ -48,6 +42,10 @@
   align-items: center;
   justify-content: center;
  }
+ 
+  #sticky-footer {
+    background-color: white;
+  }
 
  .main-text {
   font-size: 3rem;

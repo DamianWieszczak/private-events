@@ -1,15 +1,45 @@
-<%= @event.title %><br>
-<%= @event.description %><br>
-Date & Time: <%= @event.date.strftime("%B %-d, %Y at %l:%M %p") %><br>
-Hosted by: <%= @event.creator.username %><br>
-<% if @event.attendees.empty? %>
-  <p>This event has no attendees yet!</p>
-<% else %>
-  <h3>Attendees</h3>
-  <% @event.attendees.each do |attendee| %>
-    <%= attendee.username %><br>
-  <% end %>
-<% end %>
+<div class="row mb-4 mt-2">
+  <div class="col-lg-10">
+    <h1><%= @event.title %></h1>
+  </div>
+  <div class="col-lg-2">
+    <% if current_user == @event.creator %>
+      <%= link_to "Edit", edit_event_path, class: "btn btn-outline-dark mt-4 mx-2 ms-auto" %>
+      <%= link_to "Delete", edit_event_path, class: "btn btn-outline-danger mt-4 ms-auto" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col">
+    <div class="card">
+      <div class="row no-gutters">
+        <div class="col-md-8">
+          <div class="card-body">
+            <p class="card-text text-muted"> <%= @event.description %> </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card-body">
+            <p class="text-muted">
+              <%= icon('fa-solid text-dark', 'user') %>
+              Hosted by: <strong><%= @event.creator.username %></strong>
+            </p>
+            <p class="text-muted">
+              <%= icon('fa-solid text-dark', 'calendar') %>
+              Date & Time: <strong><%= @event.date.strftime("%B %-d, %Y at %l:%M %p") %></strong>
+            </p>
+            <p class="text-muted">
+              <%= icon('fa-solid text-dark', 'map-marker') %>
+              Location: <strong><%= @event.location %></strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <% if @event.date.past? %>
   <%= link_to "The event has ended", root_path, class: "btn btn-danger d-grid gap-2 col-3 ms-auto disabled"%>
@@ -20,3 +50,17 @@ Hosted by: <%= @event.creator.username %><br>
     <%= link_to "Join Event", join_event_path(@event.id), class: "btn btn-dark d-grid gap-2 col-3 ms-auto" %>
   <% end %>
 <% end %>
+
+<% if @event.attendees.empty? %>
+<ul class="list-group">
+  <li class="list-group-item active mb-4 col-6">This event has no attendees yet!</li>
+</ul>
+<% else %>
+  <h3>Attendees</h3>
+    <ul class="list-group list-group-flush col-6">
+    <% @event.attendees.each do |attendee| %>
+      <li class="list-group-item mb-4"><%= attendee.username %></li>
+    <% end %>
+  </ul>
+<% end %>
+
